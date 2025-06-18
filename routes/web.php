@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MahasiswaController;
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+use App\Http\Controllers\PasienController;
 
 
-Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('/', fn() => view('dashboard'));
+
+Route::get('/pasien', [PasienController::class, 'index']);
+Route::get('/pasien/create', [PasienController::class, 'create']);
+Route::post('/pasien', [PasienController::class, 'store']);
